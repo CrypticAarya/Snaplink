@@ -24,7 +24,7 @@ const MagneticButton = forwardRef(({ children, className = "", onClick, disabled
     };
     setRipples((prev) => [...prev, ripple]);
     setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== ripple.id)), 700);
-    onClick?.();
+    onClick?.(e);
   };
   return <button
     ref={btnRef}
