@@ -66,7 +66,7 @@ const LinkPage = () => {
   }
 
   return (
-    <>
+    <div className="pt-32 pb-20 px-6 sm:px-10">
       {(loading || loadingStats) && (
         <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
       )}
@@ -85,10 +85,10 @@ const LinkPage = () => {
           <a
             href={url?.original_url}
             target="_blank"
-            className="flex items-center gap-1 hover:underline cursor-pointer"
+            className="flex items-center gap-1 hover:underline cursor-pointer text-muted-foreground w-full sm:max-w-xl"
           >
-            <LinkIcon className="p-1" />
-            {url?.original_url}
+            <LinkIcon className="p-1 shrink-0 w-6 h-6" />
+            <span className="truncate">{url?.original_url}</span>
           </a>
           <span className="flex items-end font-extralight text-sm">
             {new Date(url?.created_at).toLocaleString()}
@@ -128,9 +128,9 @@ const LinkPage = () => {
           />
         </div>
 
-        <Card className="sm:w-3/5">
+        <Card className="sm:w-3/5 glow-card">
           <CardHeader>
-            <CardTitle className="text-4xl font-extrabold">Stats</CardTitle>
+            <CardTitle className="text-4xl font-extrabold gradient-text-hero">Stats</CardTitle>
           </CardHeader>
           {stats && stats.length ? (
             <CardContent className="flex flex-col gap-6">
@@ -157,7 +157,7 @@ const LinkPage = () => {
           )}
         </Card>
       </div>
-    </>
+    </div>
   );
 };
 

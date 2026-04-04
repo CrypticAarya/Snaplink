@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import MagneticButton from "./MagneticButton";
 import {
   Dialog,
   DialogContent,
@@ -93,7 +94,7 @@ export function CreateLink() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="destructive">Create New Link</Button>
+        <MagneticButton className="gradient-primary px-6 py-2.5 rounded-xl text-primary-foreground font-semibold hover:shadow-[0_0_20px_hsl(135_100%_42%/0.4)] transition-all">Create New Link</MagneticButton>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -128,14 +129,13 @@ export function CreateLink() {
         </div>
         {error && <Error message={errors.message} />}
         <DialogFooter className="sm:justify-start">
-          <Button
-            type="button"
-            variant="destructive"
+          <MagneticButton
             onClick={createNewLink}
             disabled={loading}
+            className="gradient-primary px-8 py-2.5 flex items-center justify-center rounded-xl text-primary-foreground font-semibold hover:shadow-[0_0_20px_hsl(135_100%_42%/0.4)] transition-all disabled:opacity-50"
           >
-            {loading ? <BeatLoader size={10} color="white" /> : "Create"}
-          </Button>
+            {loading ? <BeatLoader size={10} color="#000" /> : "Create"}
+          </MagneticButton>
         </DialogFooter>
       </DialogContent>
     </Dialog>

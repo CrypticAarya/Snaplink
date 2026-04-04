@@ -42,12 +42,12 @@ const Dashboard = () => {
   }, [urls?.length]);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 pt-32 pb-20 px-6 sm:px-10">
       {(loading || loadingClicks) && (
         <BarLoader width={"100%"} color="#36d7b7" />
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Card className="glass-card border-none">
+        <Card className="glow-card border-none">
           <CardHeader>
             <CardTitle className="text-gray-400 font-medium">Links Created</CardTitle>
           </CardHeader>
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <p className="text-5xl font-black gradient-text">{urls?.length}</p>
           </CardContent>
         </Card>
-        <Card className="glass-card border-none">
+        <Card className="glow-card border-none">
           <CardHeader>
             <CardTitle className="text-gray-400 font-medium">Total Clicks</CardTitle>
           </CardHeader>
@@ -65,7 +65,7 @@ const Dashboard = () => {
         </Card>
       </div>
       <div className="flex justify-between">
-        <h1 className="text-4xl font-extrabold">My Links</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold gradient-text-hero">My Links</h1>
         <CreateLink />
       </div>
       <div className="relative">
