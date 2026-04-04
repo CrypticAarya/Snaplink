@@ -5,15 +5,17 @@ import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
-    <div className="min-h-screen bg-background relative selection:bg-primary/20 text-foreground overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-background relative selection:bg-primary/20 text-foreground overflow-x-hidden">
       <ParticleField />
-      <div className="relative z-10 font-sans">
-        <main className="w-full">
+      <div className="flex-1 flex flex-col relative z-10 font-sans">
+        <main className="flex-1 w-full">
           <Header />
           <Outlet />
         </main>
       </div>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -55,24 +55,30 @@ const LinkCard = ({ url = [], fetchUrls }) => {
           {new Date(url?.created_at).toLocaleString()}
         </span>
       </Link>
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-center">
         <Button
           variant="ghost"
+          className="h-10 w-10 p-0 rounded-full hover:bg-primary/20 hover:text-primary transition-colors duration-300 ring-1 ring-border/50 hover:ring-primary/50"
           onClick={() =>
             navigator.clipboard.writeText(`${window.location.origin}/${url?.short_url}`)
           }
         >
-          <Copy />
+          <Copy className="w-4 h-4" />
         </Button>
-        <Button variant="ghost" onClick={downloadImage}>
-          <Download />
+        <Button 
+          variant="ghost" 
+          className="h-10 w-10 p-0 rounded-full hover:bg-primary/20 hover:text-primary transition-colors duration-300 ring-1 ring-border/50 hover:ring-primary/50"
+          onClick={downloadImage}
+        >
+          <Download className="w-4 h-4" />
         </Button>
         <Button
           variant="ghost"
+          className="h-10 w-10 p-0 rounded-full hover:bg-red-500/20 hover:text-red-400 transition-colors duration-300 ring-1 ring-border/50 hover:ring-red-500/50"
           onClick={() => fnDelete().then(() => fetchUrls())}
-          disable={loadingDelete}
+          disabled={loadingDelete}
         >
-          {loadingDelete ? <BeatLoader size={5} color="white" /> : <Trash />}
+          {loadingDelete ? <BeatLoader size={5} color="currentColor" /> : <Trash className="w-4 h-4" />}
         </Button>
       </div>
     </div>

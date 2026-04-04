@@ -1,6 +1,7 @@
-import { useState, useRef, useCallback } from "react";
-const MagneticButton = ({ children, className = "", onClick, disabled }) => {
+import { useState, useRef, useCallback, forwardRef, useImperativeHandle } from "react";
+const MagneticButton = forwardRef(({ children, className = "", onClick, disabled, ...props }, ref) => {
   const btnRef = useRef(null);
+  useImperativeHandle(ref, () => btnRef.current);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [ripples, setRipples] = useState([]);
   const handleMouseMove = useCallback((e) => {
@@ -36,6 +37,7 @@ const MagneticButton = ({ children, className = "", onClick, disabled }) => {
       transform: `translate(${offset.x}px, ${offset.y}px)`,
       transition: "transform 0.2s ease-out"
     }}
+    {...props}
   >
       {ripples.map((ripple) => <span
     key={ripple.id}
@@ -48,7 +50,7 @@ const MagneticButton = ({ children, className = "", onClick, disabled }) => {
   />)}
       {children}
     </button>;
-};
+});
 var stdin_default = MagneticButton;
 export {
   stdin_default as default
