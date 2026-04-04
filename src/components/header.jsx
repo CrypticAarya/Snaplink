@@ -12,6 +12,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { LinkIcon, LogOut } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
+import GlitchText from "./GlitchText";
+import MagneticButton from "./MagneticButton";
 import { Button } from "./ui/button";
 import { UrlState } from "@/context";
 
@@ -23,16 +25,23 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-3 group">
-          <img src="/shortify_logo.png" className="h-10 w-10 rounded-lg group-hover:rotate-12 transition-transform duration-300" alt="Shortify Logo" />
-          <span className="text-3xl font-black bg-gradient-to-br from-white to-zinc-500 bg-clip-text text-transparent tracking-tighter">
-            SHORTIFY
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-center bg-transparent">
+        <Link to="/" className="flex items-center gap-2.5 group cursor-pointer hover:no-underline">
+          <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center group-hover:shadow-[0_0_25px_hsl(135_100%_42%/0.4)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+            <LinkIcon className="w-4 h-4 text-primary-foreground" />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+            <GlitchText text="SHORTIFY" />
           </span>
         </Link>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           {!user ? (
-            <Button onClick={() => navigate("/auth")}>Login</Button>
+            <MagneticButton
+              onClick={() => navigate("/auth")}
+              className="px-5 py-2 rounded-lg border border-border text-sm font-medium text-foreground bg-transparent hover:bg-primary/10 hover:border-primary/40 hover:text-primary hover:shadow-[0_0_20px_hsl(135_100%_42%/0.2)] transition-all duration-300"
+            >
+              Login
+            </MagneticButton>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger className="w-10 rounded-full overflow-hidden">
