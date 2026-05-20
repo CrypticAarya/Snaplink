@@ -1,0 +1,3 @@
+# Allow Vercel to pick up build output (dist is in .gitignore)
+!client/dist
+!dist

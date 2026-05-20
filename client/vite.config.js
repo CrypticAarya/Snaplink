@@ -6,8 +6,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   build: {
-    // Monorepo: Vercel expects /dist at repo root, not client/dist
-    outDir: path.resolve(__dirname, "../dist"),
+    outDir: "dist",
     emptyOutDir: true,
     chunkSizeWarningLimit: 1200,
   },
