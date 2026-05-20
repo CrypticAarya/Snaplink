@@ -56,6 +56,10 @@ See [docs/architecture.md](./docs/architecture.md) for folder-by-folder detail.
 - **Server:** Express (scaffold)
 - **Shared:** ES modules for constants
 
+## Deploy
+
+See **[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)** for Vercel + Supabase setup. Copy `client/.env.example` to `client/.env` for local development.
+
 ## License
 
 Personal project.

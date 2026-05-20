@@ -1,7 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
 
-export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "https://placeholder.supabase.co";
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY || "placeholder";
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+
+if (import.meta.env.PROD && (!supabaseUrl || !supabaseKey)) {
+  throw new Error(
+    "Missing VITE_SUPABASE_URL or VITE_SUPABASE_KEY. Add them in your hosting provider's environment variables."
+  );
+}
+
+export { supabaseUrl };
+const supabase = createClient(
+  supabaseUrl || "https://placeholder.supabase.co",
+  supabaseKey || "placeholder"
+);
 
 export default supabase;
