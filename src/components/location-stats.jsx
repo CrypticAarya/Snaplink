@@ -30,9 +30,9 @@ export default function Location({stats = []}) {
         <LineChart width={700} height={300} data={cities.slice(0, 5)}>
           <XAxis dataKey="city" />
           <YAxis />
-          <Tooltip labelStyle={{color: "green"}} />
+          <Tooltip labelStyle={{ color: "hsl(262 83% 70%)" }} />
           <Legend />
-          <Line type="monotone" dataKey="count" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="count" stroke="#8b5cf6" strokeWidth={2} dot={{ fill: "#8b5cf6", strokeWidth: 0 }} />
         </LineChart>
       </ResponsiveContainer>
     </div>

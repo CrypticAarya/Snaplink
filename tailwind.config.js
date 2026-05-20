@@ -18,7 +18,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      letterSpacing: {
+        tighter: '-0.03em',
+        tight: '-0.02em',
       },
       colors: {
         border: "hsl(var(--border))",

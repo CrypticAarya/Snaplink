@@ -2,7 +2,7 @@ import DeviceStats from "@/components/device-stats";
 import Location from "@/components/location-stats";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { UrlState } from "@/context";
+import { useAuth } from "@/context";
 import { getClicksForUrl } from "@/db/apiClicks";
 import { deleteUrl, getUrl } from "@/db/apiUrls";
 import useFetch from "@/hooks/use-fetch";
@@ -31,7 +31,7 @@ const LinkPage = () => {
     document.body.removeChild(anchor);
   };
   const navigate = useNavigate();
-  const { user } = UrlState();
+  const { user } = useAuth();
   const { id } = useParams();
   const {
     loading,
@@ -68,10 +68,10 @@ const LinkPage = () => {
   return (
     <div className="pt-32 pb-20 px-6 sm:px-10">
       {(loading || loadingStats) && (
-        <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
+        <BarLoader className="mb-4" width={"100%"} color="#8b5cf6" />
       )}
       <div className="flex flex-col gap-8 sm:flex-row justify-between">
-        <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
+        <div className="flex flex-col items-start gap-8 rounded-2xl sm:w-2/5">
           <span className="text-6xl font-extrabold hover:underline cursor-pointer">
             {url?.title}
           </span>
@@ -96,7 +96,7 @@ const LinkPage = () => {
           <div className="flex gap-2">
             <Button
               variant="ghost"
-              className="h-10 w-10 p-0 rounded-full hover:bg-primary/20 hover:text-primary transition-colors duration-300 ring-1 ring-border/50 hover:ring-primary/50"
+              className="h-10 w-10 p-0 rounded-xl hover:bg-primary/15 hover:text-primary transition-all duration-200 ease-out ring-1 ring-border/60 hover:ring-primary/40"
               onClick={() =>
                 navigator.clipboard.writeText(`${window.location.origin}/${link}`)
               }
@@ -105,14 +105,14 @@ const LinkPage = () => {
             </Button>
             <Button 
               variant="ghost" 
-              className="h-10 w-10 p-0 rounded-full hover:bg-primary/20 hover:text-primary transition-colors duration-300 ring-1 ring-border/50 hover:ring-primary/50"
+              className="h-10 w-10 p-0 rounded-xl hover:bg-primary/15 hover:text-primary transition-all duration-200 ease-out ring-1 ring-border/60 hover:ring-primary/40"
               onClick={downloadImage}
             >
               <Download className="w-5 h-5" />
             </Button>
             <Button
               variant="ghost"
-              className="h-10 w-10 p-0 rounded-full hover:bg-red-500/20 hover:text-red-400 transition-colors duration-300 ring-1 ring-border/50 hover:ring-red-500/50"
+              className="h-10 w-10 p-0 rounded-xl hover:bg-red-500/15 hover:text-red-400 transition-all duration-200 ease-out ring-1 ring-border/60 hover:ring-red-500/35"
               onClick={() =>
                 fnDelete().then(() => {
                   navigate("/dashboard");
@@ -129,7 +129,7 @@ const LinkPage = () => {
           </div>
           <img
             src={url?.qr}
-            className="w-full self-center sm:self-start ring ring-zinc-500 p-1 object-contain"
+            className="w-full self-center sm:self-start rounded-2xl ring-1 ring-border/50 p-2 object-contain bg-muted/20"
             alt="qr code"
           />
         </div>

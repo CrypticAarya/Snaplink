@@ -14,31 +14,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 import GlitchText from "./GlitchText";
 import MagneticButton from "./MagneticButton";
-import { Button } from "./ui/button";
-import { UrlState } from "@/context";
+import { useAuth } from "@/context";
 
 const Header = () => {
   const { loading, fn: fnLogout } = useFetch(logout);
   const navigate = useNavigate();
 
-  const { user, fetchUser } = UrlState();
+  const { user, fetchUser } = useAuth();
 
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-center bg-transparent">
         <Link to="/" className="flex items-center gap-2.5 group cursor-pointer hover:no-underline">
-          <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center group-hover:shadow-[0_0_25px_hsl(135_100%_42%/0.4)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+          <div className="w-8 h-8 rounded-xl gradient-primary flex items-center justify-center group-hover:shadow-accent group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 ease-out">
             <LinkIcon className="w-4 h-4 text-primary-foreground" />
           </div>
           <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-            <GlitchText text="SHORTIFY" />
+            <GlitchText text="SnapLink" />
           </span>
         </Link>
         <div className="flex gap-4 items-center">
           {!user ? (
             <MagneticButton
               onClick={() => navigate("/auth")}
-              className="px-5 py-2 rounded-lg border border-border text-sm font-medium text-foreground bg-transparent hover:bg-primary/10 hover:border-primary/40 hover:text-primary hover:shadow-[0_0_20px_hsl(135_100%_42%/0.2)] transition-all duration-300"
+              className="px-5 py-2 rounded-xl border border-border/80 text-sm font-medium text-foreground bg-transparent hover:bg-white/[0.04] hover:border-primary/35 hover:text-primary hover:shadow-accent transition-all duration-300 ease-out"
             >
               Login
             </MagneticButton>
@@ -58,7 +57,7 @@ const Header = () => {
                 <DropdownMenuItem>
                   <Link to="/dashboard" className="flex">
                     <LinkIcon className="mr-2 h-4 w-4" />
-                    My Links
+                    Dashboard
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -78,7 +77,7 @@ const Header = () => {
           )}
         </div>
       </nav>
-      {loading && <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />}
+      {loading && <BarLoader className="mb-4" width={"100%"} color="#8b5cf6" />}
     </>
   );
 };

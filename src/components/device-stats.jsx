@@ -1,7 +1,7 @@
 
 import {PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#8b5cf6", "#a78bfa", "#7c3aed", "#c4b5fd", "#6d28d9", "#ddd6fe"];
 
 export default function App({stats}) {
   const deviceCount = stats.reduce((acc, item) => {

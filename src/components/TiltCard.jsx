@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from "react";
-const TiltCard = ({ children, className = "", glowColor = "135, 100%, 42%", style }) => {
+const TiltCard = ({ children, className = "", glowColor = "262, 83%, 58%", style }) => {
   const cardRef = useRef(null);
   const [transform, setTransform] = useState("");
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });

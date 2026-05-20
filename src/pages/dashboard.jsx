@@ -14,11 +14,11 @@ import useFetch from "@/hooks/use-fetch";
 
 import { getUrls } from "@/db/apiUrls";
 import { getClicksForUrls } from "@/db/apiClicks";
-import { UrlState } from "@/context";
+import { useAuth } from "@/context";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { user } = UrlState();
+  const { user } = useAuth();
   const { loading, error, data: urls, fn: fnUrls } = useFetch(getUrls, user.id);
   const {
     loading: loadingClicks,
@@ -44,20 +44,20 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col gap-8 pt-32 pb-20 px-6 sm:px-10">
       {(loading || loadingClicks) && (
-        <BarLoader width={"100%"} color="#36d7b7" />
+        <BarLoader width={"100%"} color="#8b5cf6" />
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Card className="glow-card border-none">
+        <Card className="glow-card">
           <CardHeader>
-            <CardTitle className="text-gray-400 font-medium">Links Created</CardTitle>
+            <CardTitle className="text-muted-foreground font-medium">Links Created</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-5xl font-black gradient-text">{urls?.length}</p>
           </CardContent>
         </Card>
-        <Card className="glow-card border-none">
+        <Card className="glow-card">
           <CardHeader>
-            <CardTitle className="text-gray-400 font-medium">Total Clicks</CardTitle>
+            <CardTitle className="text-muted-foreground font-medium">Total Clicks</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-5xl font-black gradient-text">{clicks?.length}</p>

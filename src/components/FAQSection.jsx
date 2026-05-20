@@ -6,8 +6,8 @@ import {
 } from "@/components/ui/accordion";
 const faqs = [
   {
-    question: "How does Shortify work?",
-    answer: "Simply paste your long URL into the input field and click 'Shorten Link'. Shortify generates a unique, compact URL that redirects to your original link. It's fast, free, and requires no sign-up."
+    question: "How does SnapLink work?",
+    answer: "Simply paste your long URL into the input field and click 'Shorten Link'. SnapLink generates a unique, compact URL that redirects to your original link. It's fast, free, and requires no sign-up."
   },
   {
     question: "Do I need an account to use the app?",
@@ -39,7 +39,7 @@ const FAQSection = () => {
             {faqs.map((faq, i) => <AccordionItem
     key={i}
     value={`item-${i}`}
-    className="glow-card rounded-xl px-6 border-none group/faq animate-fade-in-up"
+    className="glow-card rounded-2xl px-6 border-none group/faq animate-fade-in-up"
     style={{ animationDelay: `${i * 0.1}s` }}
   >
                 <AccordionTrigger className="text-left text-foreground font-medium hover:no-underline py-5 hover:text-primary transition-colors duration-300 [&[data-state=open]]:text-primary">

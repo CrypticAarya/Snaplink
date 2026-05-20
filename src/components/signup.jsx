@@ -16,7 +16,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { signup, loginWithOAuth } from "@/db/apiAuth";
 import { BeatLoader } from "react-spinners";
 import useFetch from "@/hooks/use-fetch";
-import { UrlState } from "@/context";
+import { useAuth } from "@/context";
 
 const Signup = () => {
   let [searchParams] = useSearchParams();
@@ -41,7 +41,7 @@ const Signup = () => {
   };
 
   const { loading, error, fn: fnSignup, data } = useFetch(signup, formData);
-  const { fetchUser } = UrlState();
+  const { fetchUser } = useAuth();
 
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -86,11 +86,11 @@ const Signup = () => {
   };
 
   return (
-    <Card className="glass-card border-none shadow-2xl">
+    <Card className="glass-card">
       <CardHeader>
         <CardTitle className="text-2xl font-bold gradient-text">Create Account</CardTitle>
-        <CardDescription className="text-gray-400">
-          Join Shortify to start managing your links with ease.
+        <CardDescription className="text-muted-foreground">
+          Join SnapLink to start managing your links with ease.
         </CardDescription>
         {error && <Error message={error?.message} />}
         {showSuccess && <Success message="Signup Successful! Redirecting..." />}
@@ -101,7 +101,7 @@ const Signup = () => {
             name="name"
             type="text"
             placeholder="Full Name"
-            className="bg-zinc-900/50 border-zinc-800 focus:ring-zinc-500 text-zinc-100"
+            className="bg-muted/40 border-border/60 text-foreground focus-visible:border-primary/40"
             onChange={handleInputChange}
           />
           {errors.name && <Error message={errors.name} />}
@@ -111,7 +111,7 @@ const Signup = () => {
             name="email"
             type="email"
             placeholder="Email Address"
-            className="bg-zinc-900/50 border-zinc-800 focus:ring-zinc-500 text-zinc-100"
+            className="bg-muted/40 border-border/60 text-foreground focus-visible:border-primary/40"
             onChange={handleInputChange}
           />
           {errors.email && <Error message={errors.email} />}
@@ -121,18 +121,18 @@ const Signup = () => {
             name="password"
             type="password"
             placeholder="Password"
-            className="bg-zinc-900/50 border-zinc-800 focus:ring-zinc-500 text-zinc-100"
+            className="bg-muted/40 border-border/60 text-foreground focus-visible:border-primary/40"
             onChange={handleInputChange}
           />
           {errors.password && <Error message={errors.password} />}
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-400">Profile Picture</label>
+          <label className="text-sm font-medium text-muted-foreground">Profile Picture</label>
           <Input
             name="profile_pic"
             type="file"
             accept="image/*"
-            className="bg-zinc-900/50 border-zinc-800 cursor-pointer text-zinc-100 file:bg-zinc-100 file:border-none file:text-zinc-900 file:rounded-md file:px-2 file:py-1 file:mr-4 file:hover:bg-zinc-200"
+            className="bg-muted/40 border-border/60 cursor-pointer text-foreground file:bg-primary file:border-0 file:text-primary-foreground file:rounded-lg file:px-3 file:py-1.5 file:mr-4 file:font-medium file:hover:bg-primary/90"
             onChange={handleInputChange}
           />
           {errors.profile_pic && <Error message={errors.profile_pic} />}
@@ -141,24 +141,25 @@ const Signup = () => {
       <CardFooter className="flex-col gap-4">
         <Button
           onClick={handleSignup}
-          className="w-full bg-zinc-100 text-zinc-900 hover:bg-white font-bold py-6 rounded-xl transition-all"
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 ease-out"
         >
           {loading ? (
-            <BeatLoader size={10} color="#18181b" />
+            <BeatLoader size={10} color="#fafafa" />
           ) : (
-            "Create Shortify Account"
+            "Create SnapLink Account"
           )}
         </Button>
 
         <div className="flex w-full items-center gap-2">
-            <span className="h-[1px] flex-1 bg-zinc-800"></span>
-            <span className="text-sm text-zinc-500">or</span>
-            <span className="h-[1px] flex-1 bg-zinc-800"></span>
+            <span className="h-px flex-1 bg-border/80" />
+            <span className="text-sm text-muted-foreground">or</span>
+            <span className="h-px flex-1 bg-border/80" />
         </div>
 
         <Button
           onClick={() => loginWithOAuth("google")}
-          className="w-full bg-zinc-800 border-zinc-700 border text-zinc-100 hover:bg-zinc-700 font-bold py-6 rounded-xl transition-all"
+          variant="outline"
+          className="w-full border-border/80 bg-white/[0.04] py-6 rounded-xl font-semibold hover:bg-white/[0.08] transition-all duration-200 ease-out"
         >
           Continue with Google
         </Button>

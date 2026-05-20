@@ -1,24 +1,24 @@
-# Shortify - Premium URL Shortener
+# SnapLink — Premium URL Shortener
 
-Shortify is a modern, high-performance URL shortening application built with **React**, **Tailwind CSS**, and **Supabase**. It features a premium, glassmorphism-based design and a robust feature set for link management and analytics.
+SnapLink is a modern, high-performance URL shortening application built with **React**, **Tailwind CSS**, and **Supabase**. It features a premium, glassmorphism-based design and a robust feature set for link management and analytics.
 
 ## Features
 
-- **Custom Short Links**: Create branded and memorable short URLs.
-- **Advanced Analytics**: Track clicks, device types, and geographic locations in real-time.
-- **QR Code Generation**: Automatically generate QR codes for every shortened link.
+- **Custom short links**: Create branded and memorable short URLs.
+- **Advanced analytics**: Track clicks, device types, and geographic locations in real time.
+- **QR code generation**: Automatically generate QR codes for every shortened link.
 - **Premium UI**: A sleek, dark-themed interface with glassmorphism and smooth transitions.
-- **Secure Authentication**: Built-in user authentication powered by Supabase.
+- **Secure authentication**: Built-in user authentication powered by Supabase.
 
-## Tech Stack
+## Tech stack
 
 - **Frontend**: React.js, Vite, Tailwind CSS
-- **UI Components**: Shadcn UI, Lucide React
-- **Backend**: Supabase (Database, Auth, Storage)
-- **State Management**: React Context API
-- **Form Validation**: Yup
+- **UI components**: Shadcn UI, Lucide React
+- **Backend**: Supabase (database, auth, storage)
+- **State management**: React Context API
+- **Form validation**: Yup
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 

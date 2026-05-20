@@ -1,8 +1,11 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import * as esbuild from 'esbuild';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const inputDir = '/tmp/charm-url-booster/src/components';
-const outputDir = '/Users/kartikk/Downloads/edits /SHORTIFY/src/components';
+const outputDir = path.join(__dirname, 'src', 'components');
 
 const files = fs.readdirSync(inputDir).filter(f => f.endsWith('.tsx'));
 for (const file of files) {

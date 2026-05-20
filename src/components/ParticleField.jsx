@@ -55,7 +55,7 @@ const ParticleField = () => {
         const glow = Math.sin(p.pulse) * 0.3 + 0.7;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(135, 100%, 45%, ${p.opacity * glow})`;
+        ctx.fillStyle = `hsla(262, 83%, 58%, ${p.opacity * glow})`;
         ctx.fill();
       }
       for (let i = 0; i < particles.length; i++) {
@@ -68,7 +68,7 @@ const ParticleField = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `hsla(135, 100%, 45%, ${opacity})`;
+            ctx.strokeStyle = `hsla(262, 83%, 58%, ${opacity})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -83,7 +83,7 @@ const ParticleField = () => {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `hsla(135, 100%, 50%, ${opacity})`;
+          ctx.strokeStyle = `hsla(262, 90%, 68%, ${opacity})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }

@@ -70,7 +70,7 @@ const HeroSection = () => {
       <div
     className="pointer-events-none absolute w-[700px] h-[700px] rounded-full opacity-[0.07] blur-[130px] transition-all duration-500 ease-out"
     style={{
-      background: "hsl(135 100% 42%)",
+      background: "hsl(262 83% 58%)",
       left: `${mousePos.x}%`,
       top: `${mousePos.y}%`,
       transform: "translate(-50%, -50%)"
@@ -92,7 +92,7 @@ const HeroSection = () => {
         {
     /* Animated badge */
   }
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-8 animate-fade-in hover:border-primary/50 hover:bg-primary/10 hover:shadow-[0_0_20px_hsl(135_100%_42%/0.15)] transition-all duration-500 cursor-default group">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/10 mb-8 animate-fade-in hover:border-primary/45 hover:bg-primary/[0.14] hover:shadow-[0_0_24px_hsl(var(--primary)/0.18)] transition-all duration-300 ease-out cursor-default group">
           <Zap className="w-3.5 h-3.5 text-primary animate-pulse-glow" />
           <span className="text-xs font-medium text-primary">Lightning-fast URL shortening</span>
         </div>
@@ -135,10 +135,10 @@ const HeroSection = () => {
             <div
     className="absolute -inset-[2px] rounded-2xl opacity-0 group-hover/input:opacity-100 transition-opacity duration-700 animate-spin-slow"
     style={{
-      background: "conic-gradient(from 0deg, transparent, hsl(135 100% 42% / 0.4), transparent, hsl(135 100% 42% / 0.4), transparent)"
+      background: "conic-gradient(from 0deg, transparent, hsl(262 83% 58% / 0.35), transparent, hsl(280 72% 52% / 0.35), transparent)"
     }}
   />
-            <div className="relative flex flex-col sm:flex-row gap-3 p-2 rounded-2xl border border-border bg-card input-glow transition-all">
+            <div className="relative flex flex-col sm:flex-row gap-3 p-2 rounded-2xl border border-border/70 bg-card/50 backdrop-blur-md input-glow transition-all duration-300 ease-out">
               <input
     type="url"
     value={url}
@@ -150,7 +150,7 @@ const HeroSection = () => {
               <MagneticButton
     onClick={handleShorten}
     disabled={isLoading}
-    className="gradient-primary px-8 py-3.5 rounded-xl text-primary-foreground font-semibold text-base transition-all duration-300 disabled:opacity-60 whitespace-nowrap hover:shadow-[0_0_35px_hsl(135_100%_42%/0.4)] active:scale-95"
+    className="gradient-primary px-8 py-3.5 rounded-xl text-primary-foreground font-semibold text-base transition-all duration-300 ease-out disabled:opacity-60 whitespace-nowrap shadow-md shadow-primary/25 hover:shadow-accent-lg hover:brightness-[1.03] active:scale-[0.98]"
   >
                 {isLoading ? <span className="flex items-center gap-2">
                     <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -166,14 +166,14 @@ const HeroSection = () => {
           {
     /* Result */
   }
-          {shortenedUrl && <div className="mt-4 flex items-center justify-between gap-3 p-4 rounded-xl border border-primary/20 bg-primary/5 animate-slide-in-up backdrop-blur-sm">
+          {shortenedUrl && <div className="mt-4 flex items-center justify-between gap-3 p-4 rounded-2xl border border-border/70 bg-card/40 backdrop-blur-md animate-slide-in-up ring-1 ring-white/[0.04]">
               <div className="flex items-center gap-3 min-w-0">
                 <ExternalLink className="w-4 h-4 text-primary shrink-0 animate-bounce-subtle" />
                 <span className="text-primary font-medium truncate">{shortenedUrl}</span>
               </div>
               <MagneticButton
     onClick={handleCopy}
-    className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 hover:shadow-[0_0_15px_hsl(135_100%_42%/0.2)] transition-all duration-200 shrink-0"
+    className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary/15 text-primary text-sm font-medium hover:bg-primary/25 hover:shadow-accent transition-all duration-200 ease-out shrink-0"
   >
                 <Copy className="w-3.5 h-3.5" />
                 {copied ? "Copied!" : "Copy"}

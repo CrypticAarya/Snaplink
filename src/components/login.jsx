@@ -15,7 +15,7 @@ import Error from "./error";
 import { login, loginWithOAuth } from "@/db/apiAuth";
 import { BeatLoader } from "react-spinners";
 import useFetch from "@/hooks/use-fetch";
-import { UrlState } from "@/context";
+import { useAuth } from "@/context";
 
 const Login = () => {
   let [searchParams] = useSearchParams();
@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   const { loading, error, fn: fnLogin, data } = useFetch(login, formData);
-  const { fetchUser } = UrlState();
+  const { fetchUser } = useAuth();
 
   useEffect(() => {
     if (error === null && data) {
@@ -74,10 +74,10 @@ const Login = () => {
   };
 
   return (
-    <Card className="glass-card border-none shadow-2xl">
+    <Card className="glass-card">
       <CardHeader>
         <CardTitle className="text-2xl font-bold gradient-text">Welcome Back</CardTitle>
-        <CardDescription className="text-gray-400">
+        <CardDescription className="text-muted-foreground">
           Enter your credentials to access your short links.
         </CardDescription>
         {error && <Error message={error.message} />}
@@ -88,7 +88,7 @@ const Login = () => {
             name="email"
             type="email"
             placeholder="Email Address"
-            className="bg-zinc-900/50 border-zinc-800 focus:ring-zinc-500 text-zinc-100"
+            className="bg-muted/40 border-border/60 text-foreground focus-visible:border-primary/40"
             onChange={handleInputChange}
           />
           {errors.email && <Error message={errors.email} />}
@@ -98,7 +98,7 @@ const Login = () => {
             name="password"
             type="password"
             placeholder="Password"
-            className="bg-zinc-900/50 border-zinc-800 focus:ring-zinc-500 text-zinc-100"
+            className="bg-muted/40 border-border/60 text-foreground focus-visible:border-primary/40"
             onChange={handleInputChange}
           />
           {errors.password && <Error message={errors.password} />}
@@ -107,20 +107,21 @@ const Login = () => {
       <CardFooter className="flex-col gap-4">
         <Button
           onClick={handleLogin}
-          className="w-full bg-zinc-100 text-zinc-900 hover:bg-white font-bold py-6 rounded-xl transition-all"
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 ease-out"
         >
-          {loading ? <BeatLoader size={10} color="#18181b" /> : "Login to Shortify"}
+          {loading ? <BeatLoader size={10} color="#fafafa" /> : "Login to SnapLink"}
         </Button>
 
         <div className="flex w-full items-center gap-2">
-            <span className="h-[1px] flex-1 bg-zinc-800"></span>
-            <span className="text-sm text-zinc-500">or</span>
-            <span className="h-[1px] flex-1 bg-zinc-800"></span>
+            <span className="h-px flex-1 bg-border/80" />
+            <span className="text-sm text-muted-foreground">or</span>
+            <span className="h-px flex-1 bg-border/80" />
         </div>
 
         <Button
           onClick={() => loginWithOAuth("google")}
-          className="w-full bg-zinc-800 border-zinc-700 border text-zinc-100 hover:bg-zinc-700 font-bold py-6 rounded-xl transition-all"
+          variant="outline"
+          className="w-full border-border/80 bg-white/[0.04] py-6 rounded-xl font-semibold hover:bg-white/[0.08] transition-all duration-200 ease-out"
         >
           Continue with Google
         </Button>

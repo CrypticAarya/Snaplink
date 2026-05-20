@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import MagneticButton from "./MagneticButton";
 import {
   Dialog,
@@ -17,11 +16,11 @@ import * as yup from "yup";
 import useFetch from "@/hooks/use-fetch";
 import { createUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
-import { UrlState } from "@/context";
+import { useAuth } from "@/context";
 import { QRCode } from "react-qrcode-logo";
 
 export function CreateLink() {
-  const { user } = UrlState();
+  const { user } = useAuth();
 
   const navigate = useNavigate();
   const ref = useRef();
@@ -94,7 +93,7 @@ export function CreateLink() {
       }}
     >
       <DialogTrigger asChild>
-        <MagneticButton className="gradient-primary px-6 py-2.5 rounded-xl text-primary-foreground font-semibold hover:shadow-[0_0_20px_hsl(135_100%_42%/0.4)] transition-all">Create New Link</MagneticButton>
+        <MagneticButton className="gradient-primary px-6 py-2.5 rounded-xl text-primary-foreground font-semibold shadow-md shadow-primary/20 hover:shadow-accent-lg transition-all duration-300 ease-out">Create New Link</MagneticButton>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -132,9 +131,9 @@ export function CreateLink() {
           <MagneticButton
             onClick={createNewLink}
             disabled={loading}
-            className="gradient-primary px-8 py-2.5 flex items-center justify-center rounded-xl text-primary-foreground font-semibold hover:shadow-[0_0_20px_hsl(135_100%_42%/0.4)] transition-all disabled:opacity-50"
+            className="gradient-primary px-8 py-2.5 flex items-center justify-center rounded-xl text-primary-foreground font-semibold shadow-md shadow-primary/20 hover:shadow-accent-lg transition-all duration-300 ease-out disabled:opacity-50"
           >
-            {loading ? <BeatLoader size={10} color="#000" /> : "Create"}
+            {loading ? <BeatLoader size={10} color="#fafafa" /> : "Create"}
           </MagneticButton>
         </DialogFooter>
       </DialogContent>

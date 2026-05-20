@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="SnapLink">
+  <rect width="32" height="32" rx="8" fill="#070707"/>
+  <path d="M9 14a5 5 0 0 1 7.07-7.07l1.06 1.06a5 5 0 0 1 0 7.07l-1.06 1.06" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+  <path d="M23 18a5 5 0 0 1-7.07 7.07l-1.06-1.06a5 5 0 0 1 0-7.07l1.06-1.06" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+  <path d="M13 13l6 6" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+</svg>
