@@ -1,0 +1,10 @@
+{
+  "name": "@snaplink/shared",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./constants/app": "./constants/app.js",
+    "./constants/routes": "./constants/routes.js"
+  }
+}
