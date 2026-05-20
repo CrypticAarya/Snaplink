@@ -1,4 +1,3 @@
-
 import { Copy, Download, LinkIcon, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,79 +5,73 @@ import useFetch from "@/hooks/use-fetch";
 import { deleteUrl } from "@/services/api/urls";
 import { BeatLoader } from "react-spinners";
 
-const LinkCard = ({ url = [], fetchUrls }) => {
+const LinkCard = ({ url, fetchUrls }) => {
+  const slug = url?.custom_url || url?.short_url;
+
   const downloadImage = () => {
-    const imageUrl = url?.qr;
-    const fileName = url?.title;
-
-
     const anchor = document.createElement("a");
-    anchor.href = imageUrl;
-    anchor.download = fileName;
-
-
+    anchor.href = url?.qr;
+    anchor.download = url?.title;
     document.body.appendChild(anchor);
-
-
     anchor.click();
-
-
     document.body.removeChild(anchor);
   };
 
   const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, url.id);
 
   return (
-    <div className="flex flex-col md:flex-row gap-5 p-6 glow-card rounded-2xl transition-all duration-300 ease-out group overflow-hidden">
+    <div className="surface-card p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 group">
       <img
         src={url?.qr}
-        className="h-32 object-contain ring-1 ring-border/50 p-2 bg-muted/20 rounded-2xl self-start group-hover:ring-primary/25 transition-all duration-300"
-        alt="qr code"
+        className="h-24 w-24 sm:h-28 sm:w-28 object-contain rounded-lg ring-1 ring-border/60 p-1.5 bg-muted/30 self-start shrink-0"
+        alt="QR code"
       />
-      <Link to={`/link/${url?.id}`} className="flex flex-col flex-1 min-w-0">
-        <span className="text-3xl font-extrabold text-foreground hover:text-primary transition-colors cursor-pointer tracking-tight truncate">
+      <Link to={`/link/${url?.id}`} className="flex flex-col flex-1 min-w-0 gap-1.5">
+        <span className="text-lg sm:text-xl font-semibold text-foreground group-hover:text-primary transition-colors truncate">
           {url?.title}
         </span>
-        <a
-          href={`/${url?.custom_url ? url?.custom_url : url.short_url}`}
-          target="_blank"
-          onClick={(e) => e.stopPropagation()}
-          className="text-xl md:text-2xl text-primary font-bold hover:underline underline-offset-4 cursor-pointer mt-1 truncate"
-        >
-          {window.location.host}/{url?.custom_url ? url?.custom_url : url.short_url}
-        </a>
-        <span className="flex items-center gap-1 hover:underline cursor-pointer text-muted-foreground mt-2 text-sm">
-          <LinkIcon className="p-1 shrink-0 w-5 h-5 text-primary/80" />
+        <span className="text-sm sm:text-base font-medium text-primary truncate">
+          {window.location.host}/{slug}
+        </span>
+        <span className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground min-w-0">
+          <LinkIcon className="w-3.5 h-3.5 shrink-0" />
           <span className="truncate">{url?.original_url}</span>
         </span>
-        <span className="flex items-end font-extralight text-sm flex-1 text-muted-foreground/80 mt-4">
+        <span className="text-xs text-muted-foreground/80 mt-1">
           {new Date(url?.created_at).toLocaleString()}
         </span>
       </Link>
-      <div className="flex gap-2 items-center">
+      <div className="flex sm:flex-col gap-2 self-end sm:self-center shrink-0">
         <Button
           variant="ghost"
-          className="h-10 w-10 p-0 rounded-xl hover:bg-primary/15 hover:text-primary transition-all duration-200 ease-out ring-1 ring-border/60 hover:ring-primary/40"
+          size="icon"
+          className="h-10 w-10 min-h-[40px] min-w-[40px] rounded-lg ring-1 ring-border/60 hover:bg-primary/10 hover:text-primary sm:h-9 sm:w-9"
           onClick={() =>
-            navigator.clipboard.writeText(`${window.location.origin}/${url?.short_url}`)
+            navigator.clipboard.writeText(`${window.location.origin}/${slug}`)
           }
         >
           <Copy className="w-4 h-4" />
         </Button>
-        <Button 
-          variant="ghost" 
-          className="h-10 w-10 p-0 rounded-xl hover:bg-primary/15 hover:text-primary transition-all duration-200 ease-out ring-1 ring-border/60 hover:ring-primary/40"
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-10 w-10 min-h-[40px] min-w-[40px] rounded-lg ring-1 ring-border/60 hover:bg-primary/10 hover:text-primary sm:h-9 sm:w-9"
           onClick={downloadImage}
         >
           <Download className="w-4 h-4" />
         </Button>
         <Button
           variant="ghost"
-          className="h-10 w-10 p-0 rounded-xl hover:bg-red-500/15 hover:text-red-400 transition-all duration-200 ease-out ring-1 ring-border/60 hover:ring-red-500/35"
+          size="icon"
+          className="h-10 w-10 min-h-[40px] min-w-[40px] rounded-lg ring-1 ring-border/60 hover:bg-red-500/10 hover:text-red-400 sm:h-9 sm:w-9"
           onClick={() => fnDelete().then(() => fetchUrls())}
           disabled={loadingDelete}
         >
-          {loadingDelete ? <BeatLoader size={5} color="currentColor" /> : <Trash className="w-4 h-4" />}
+          {loadingDelete ? (
+            <BeatLoader size={5} color="currentColor" />
+          ) : (
+            <Trash className="w-4 h-4" />
+          )}
         </Button>
       </div>
     </div>

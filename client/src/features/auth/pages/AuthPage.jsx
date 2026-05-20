@@ -17,21 +17,32 @@ function Auth() {
   }, [isAuthenticated, loading, navigate]);
 
   return (
-    <div className="mt-36 flex flex-col items-center gap-10">
-      <h1 className="text-5xl font-black tracking-tighter leading-tight gradient-text-hero">
-        {searchParams.get("createNew")
-          ? "Hold up! Let's login first.."
-          : "Join SnapLink"}
-      </h1>
-      <Tabs defaultValue="login" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2">
+    <div className="page-container flex w-full max-w-md flex-col items-center gap-8 pb-12 sm:gap-8 sm:pb-14">
+      <div className="w-full space-y-3 text-center sm:space-y-2.5">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          {searchParams.get("createNew")
+            ? "Sign in to shorten your link"
+            : "Join SnapLink"}
+        </h1>
+        <p className="text-sm leading-relaxed text-[hsl(0_0%_68%)] sm:text-[0.9375rem]">
+          {searchParams.get("createNew")
+            ? "Create an account or log in to continue."
+            : "Start shortening and tracking links in seconds."}
+        </p>
+      </div>
+
+      <Tabs
+        defaultValue="login"
+        className="flex w-full max-w-[400px] flex-col gap-5 sm:gap-4"
+      >
+        <TabsList className="grid h-11 w-full grid-cols-2 sm:h-10">
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="signup">Signup</TabsTrigger>
         </TabsList>
-        <TabsContent value="login">
+        <TabsContent value="login" className="mt-0">
           <Login />
         </TabsContent>
-        <TabsContent value="signup">
+        <TabsContent value="signup" className="mt-0">
           <Signup />
         </TabsContent>
       </Tabs>

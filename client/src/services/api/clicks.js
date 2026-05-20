@@ -1,17 +1,6 @@
 import { UAParser } from "ua-parser-js";
 import supabase from "./supabase.js";
 
-
-
-
-
-
-
-
-
-
-
-
 export async function getClicksForUrls(urlIds) {
   const { data, error } = await supabase
     .from("clicks")
@@ -19,7 +8,6 @@ export async function getClicksForUrls(urlIds) {
     .in("url_id", urlIds);
 
   if (error) {
-    console.error("Error fetching clicks:", error);
     return null;
   }
 
@@ -33,7 +21,6 @@ export async function getClicksForUrl(url_id) {
     .eq("url_id", url_id);
 
   if (error) {
-    console.error(error);
     throw new Error("Unable to load Stats");
   }
 
@@ -55,8 +42,8 @@ export const storeClicks = async ({ id, originalUrl }) => {
       const data = await response.json();
       city = data.city || "Unknown";
       country = data.country || "Unknown";
-    } catch (fetchError) {
-      console.error("Error fetching location data:", fetchError);
+    } catch {
+      /* geo lookup optional */
     }
 
     await supabase.from("clicks").insert({
@@ -65,9 +52,8 @@ export const storeClicks = async ({ id, originalUrl }) => {
       country: country,
       device: device,
     });
-
-  } catch (error) {
-    console.error("Error recording click:", error);
+  } catch {
+    /* redirect proceeds even if click logging fails */
   } finally {
     window.location.href = originalUrl;
   }

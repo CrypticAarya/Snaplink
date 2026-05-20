@@ -18,29 +18,28 @@ const features = [
   }
 ];
 const FeaturesSection = () => {
-  return <section className="py-24 relative z-10">
-      <div className="w-full px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Why choose SnapLink?</h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+  return <section className="relative z-10 py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center sm:mb-10">
+          <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-3xl">Why choose SnapLink?</h2>
+          <p className="mx-auto max-w-lg text-sm text-muted-foreground sm:text-base">
             Everything you need to manage, track, and optimize your links.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
           {features.map((feature, i) => <TiltCard
     key={feature.title}
-    className="glow-card rounded-2xl animate-fade-in-up"
-    style={{ animationDelay: `${i * 0.15}s` }}
+    className="surface-card rounded-xl"
   >
-              <div className="relative z-20 p-8 text-center group">
-                <div className="w-14 h-14 rounded-2xl bg-primary/12 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/22 group-hover:scale-110 group-hover:shadow-accent group-hover:rotate-[5deg] transition-all duration-500 ease-out">
-                  <feature.icon className="w-6 h-6 text-primary group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.45)] transition-all duration-300" />
+              <div className="relative z-20 p-6 sm:p-7 text-center">
+                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <feature.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-base font-semibold text-foreground mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed group-hover:text-muted-foreground/80 transition-colors duration-300">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </div>

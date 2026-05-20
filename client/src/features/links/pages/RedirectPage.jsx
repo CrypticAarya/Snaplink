@@ -28,16 +28,13 @@ const RedirectLink = () => {
 
   if (loading || loadingStats) {
     return (
-      <div className="fixed inset-0 flex flex-col items-center justify-center bg-background z-50 p-6">
-        <div className="relative mb-8">
-          <div className="absolute -inset-4 bg-primary/15 blur-2xl rounded-full" />
-          <span className="relative text-5xl font-black bg-gradient-to-br from-foreground via-foreground to-primary bg-clip-text text-transparent tracking-tighter">
-            SnapLink
-          </span>
-        </div>
-        <BarLoader width={200} color="#8b5cf6" />
-        <p className="mt-8 text-muted-foreground font-medium animate-pulse tracking-wide">
-          Navigating to your destination...
+      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background p-6">
+        <span className="mb-8 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          SnapLink
+        </span>
+        <BarLoader width={200} color="#c41e3a" />
+        <p className="mt-8 text-sm text-muted-foreground tracking-wide">
+          Taking you to your destination…
         </p>
       </div>
     );

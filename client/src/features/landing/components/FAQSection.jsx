@@ -23,13 +23,13 @@ const faqs = [
   }
 ];
 const FAQSection = () => {
-  return <section className="py-24 relative">
-      <div className="w-full px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
+  return <section className="relative py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center sm:mb-10">
+          <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-3xl">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto">
             Got questions? We've got answers.
           </p>
         </div>
@@ -39,7 +39,7 @@ const FAQSection = () => {
             {faqs.map((faq, i) => <AccordionItem
     key={i}
     value={`item-${i}`}
-    className="glow-card rounded-2xl px-6 border-none group/faq animate-fade-in-up"
+    className="surface-card rounded-xl px-4 sm:px-5 border-none"
     style={{ animationDelay: `${i * 0.1}s` }}
   >
                 <AccordionTrigger className="text-left text-foreground font-medium hover:no-underline py-5 hover:text-primary transition-colors duration-300 [&[data-state=open]]:text-primary">

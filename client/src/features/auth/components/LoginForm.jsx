@@ -75,15 +75,21 @@ const Login = () => {
 
   return (
     <Card className="glass-card">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold gradient-text">Welcome Back</CardTitle>
+      <CardHeader className="space-y-2 px-5 pb-3 pt-6 sm:space-y-1.5 sm:p-6">
+        <CardTitle className="text-xl font-bold gradient-text sm:text-2xl">
+          Welcome Back
+        </CardTitle>
         <CardDescription className="text-muted-foreground">
           Enter your credentials to access your short links.
         </CardDescription>
-        {error && <Error message={error.message} />}
+        {error && (
+          <div className="pt-1">
+            <Error message={error.message} />
+          </div>
+        )}
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
+      <CardContent className="space-y-5 px-5 pb-2 sm:space-y-4 sm:px-6">
+        <div className="space-y-2.5">
           <Input
             name="email"
             type="email"
@@ -93,7 +99,7 @@ const Login = () => {
           />
           {errors.email && <Error message={errors.email} />}
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <Input
             name="password"
             type="password"
@@ -104,12 +110,12 @@ const Login = () => {
           {errors.password && <Error message={errors.password} />}
         </div>
       </CardContent>
-      <CardFooter className="flex-col gap-4">
+      <CardFooter className="flex-col gap-5 px-5 pb-6 pt-2 sm:gap-4 sm:px-6 sm:pb-6">
         <Button
           onClick={handleLogin}
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 ease-out"
+          className="w-full min-h-11 rounded-lg font-semibold"
         >
-          {loading ? <BeatLoader size={10} color="#fafafa" /> : "Login to SnapLink"}
+          {loading ? <BeatLoader size={10} color="#fafafa" /> : "Log in to SnapLink"}
         </Button>
 
         <div className="flex w-full items-center gap-2">
@@ -121,7 +127,7 @@ const Login = () => {
         <Button
           onClick={() => loginWithOAuth("google")}
           variant="outline"
-          className="w-full border-border/80 bg-white/[0.04] py-6 rounded-xl font-semibold hover:bg-white/[0.08] transition-all duration-200 ease-out"
+          className="w-full min-h-11 rounded-lg font-semibold"
         >
           Continue with Google
         </Button>

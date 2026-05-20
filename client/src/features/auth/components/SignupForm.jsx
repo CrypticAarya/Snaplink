@@ -79,20 +79,26 @@ const Signup = () => {
 
   return (
     <Card className="glass-card">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold gradient-text">
+      <CardHeader className="space-y-2 px-5 pb-3 pt-6 sm:space-y-1.5 sm:p-6">
+        <CardTitle className="text-xl font-bold gradient-text sm:text-2xl">
           Create Account
         </CardTitle>
         <CardDescription className="text-muted-foreground">
           Join SnapLink to start managing your links with ease.
         </CardDescription>
-        {error && <Error message={error?.message} />}
+        {error && (
+          <div className="pt-1">
+            <Error message={error?.message} />
+          </div>
+        )}
         {showSuccess && (
-          <Success message="Signup successful! Redirecting..." />
+          <div className="pt-1">
+            <Success message="Signup successful! Redirecting..." />
+          </div>
         )}
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
+      <CardContent className="space-y-5 px-5 pb-2 sm:space-y-4 sm:px-6">
+        <div className="space-y-2.5">
           <Input
             name="name"
             type="text"
@@ -103,7 +109,7 @@ const Signup = () => {
           />
           {errors.name && <Error message={errors.name} />}
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <Input
             name="email"
             type="email"
@@ -114,7 +120,7 @@ const Signup = () => {
           />
           {errors.email && <Error message={errors.email} />}
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <Input
             name="password"
             type="password"
@@ -126,10 +132,10 @@ const Signup = () => {
           {errors.password && <Error message={errors.password} />}
         </div>
       </CardContent>
-      <CardFooter className="flex-col gap-4">
+      <CardFooter className="flex-col gap-5 px-5 pb-6 pt-2 sm:gap-4 sm:px-6 sm:pb-6">
         <Button
           onClick={handleSignup}
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 ease-out"
+          className="w-full min-h-11 rounded-lg font-semibold"
         >
           {loading ? (
             <BeatLoader size={10} color="#fafafa" />
@@ -147,7 +153,7 @@ const Signup = () => {
         <Button
           onClick={() => loginWithOAuth("google")}
           variant="outline"
-          className="w-full border-border/80 bg-white/[0.04] py-6 rounded-xl font-semibold hover:bg-white/[0.08] transition-all duration-200 ease-out"
+          className="w-full min-h-11 rounded-lg font-semibold"
         >
           Continue with Google
         </Button>

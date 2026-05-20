@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from "react";
-const TiltCard = ({ children, className = "", glowColor = "262, 83%, 58%", style }) => {
+const TiltCard = ({ children, className = "", glowColor = "0, 72%, 46%", style }) => {
   const cardRef = useRef(null);
   const [transform, setTransform] = useState("");
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
@@ -27,7 +27,7 @@ const TiltCard = ({ children, className = "", glowColor = "262, 83%, 58%", style
     style={{
       transform,
       transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
-      boxShadow: isHovered ? `0 0 30px hsla(${glowColor}, 0.2)` : "none",
+      boxShadow: isHovered ? `0 0 20px hsla(${glowColor}, 0.12)` : "none",
       ...style
     }}
   >

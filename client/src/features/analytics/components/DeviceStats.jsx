@@ -1,14 +1,11 @@
+import { Monitor } from "lucide-react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { EmptyState } from "@/components/common/EmptyState";
+import { CHART_COLORS } from "@/constants/theme";
 
-import {PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
-
-const COLORS = ["#8b5cf6", "#a78bfa", "#7c3aed", "#c4b5fd", "#6d28d9", "#ddd6fe"];
-
-export default function App({stats}) {
+export default function DeviceStats({ stats = [] }) {
   const deviceCount = stats.reduce((acc, item) => {
-    if (!acc[item.device]) {
-      acc[item.device] = 0;
-    }
-    acc[item.device]++;
+    acc[item.device] = (acc[item.device] || 0) + 1;
     return acc;
   }, {});
 
@@ -17,25 +14,50 @@ export default function App({stats}) {
     count: deviceCount[device],
   }));
 
+  if (!result.length) {
+    return (
+      <EmptyState
+        size="compact"
+        icon={Monitor}
+        title="No device data yet"
+        description="Device breakdowns appear once people start clicking your link."
+      />
+    );
+  }
+
   return (
-    <div style={{width: "100%", height: 300}}>
-      <ResponsiveContainer>
-        <PieChart width={700} height={400}>
+    <div className="w-full h-[220px] sm:h-[260px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
           <Pie
             data={result}
-            labelLine={false}
-            label={({device, percent}) =>
-              `${device}: ${(percent * 100).toFixed(0)}%`
-            }
             dataKey="count"
+            nameKey="device"
+            cx="50%"
+            cy="50%"
+            innerRadius={48}
+            outerRadius={72}
+            paddingAngle={2}
+            label={({ device, percent }) =>
+              `${device} ${(percent * 100).toFixed(0)}%`
+            }
+            labelLine={false}
           >
             {result.map((entry, index) => (
               <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+                key={entry.device}
+                fill={CHART_COLORS[index % CHART_COLORS.length]}
               />
             ))}
           </Pie>
+          <Tooltip
+            contentStyle={{
+              background: "hsl(0 0% 5%)",
+              border: "1px solid hsl(0 0% 20%)",
+              borderRadius: "8px",
+              fontSize: "12px",
+            }}
+          />
         </PieChart>
       </ResponsiveContainer>
     </div>

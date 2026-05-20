@@ -7,7 +7,6 @@ export async function getUrls(user_id) {
     .eq("user_id", user_id);
 
   if (error) {
-    console.error(error);
     throw new Error("Unable to load URLs");
   }
 
@@ -23,7 +22,6 @@ export async function getUrl({id, user_id}) {
     .single();
 
   if (error) {
-    console.error(error);
     throw new Error("Short Url not found");
   }
 
@@ -38,7 +36,6 @@ export async function getLongUrl(id) {
     .single();
 
   if (shortLinkError && shortLinkError.code !== "PGRST116") {
-    console.error("Error fetching short link:", shortLinkError);
     return;
   }
 
@@ -72,7 +69,6 @@ export async function createUrl({title, longUrl, customUrl, user_id}, qrcode) {
     .select();
 
   if (error) {
-    console.error(error);
     throw new Error("Error creating short URL");
   }
 
@@ -83,7 +79,6 @@ export async function deleteUrl(id) {
   const {data, error} = await supabase.from("urls").delete().eq("id", id);
 
   if (error) {
-    console.error(error);
     throw new Error("Unable to delete Url");
   }
 

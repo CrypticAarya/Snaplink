@@ -1,9 +1,9 @@
 import { Link } from "lucide-react";
 const Footer = () => {
-  return <footer className="border-t border-border/50 py-10">
-      <div className="w-full px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+  return <footer className="border-t border-border/50 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg gradient-primary flex items-center justify-center shadow-md shadow-primary/20">
+          <div className="w-6 h-6 rounded-lg gradient-primary flex items-center justify-center">
             <Link className="w-3 h-3 text-primary-foreground" />
           </div>
           <span className="text-sm font-semibold text-foreground">SnapLink</span>
