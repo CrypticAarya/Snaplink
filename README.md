@@ -1,65 +1,111 @@
-# SnapLink — Premium URL Shortener
+# SnapLink
 
-SnapLink is a modern URL shortening app with analytics, QR codes, and Supabase-backed auth. The repo is organized as a small monorepo so the frontend and future API can grow separately.
+SnapLink is a full-stack URL shortener app where users can create short links, generate QR codes, and track clicks.
 
-## Project structure
+Built using React, Vite, Tailwind CSS, and Supabase.
 
+---
+
+## Features
+
+- User authentication
+- Create short links
+- Custom short URLs
+- QR code generation
+- Click analytics
+- Responsive UI
+- Supabase backend integration
+
+---
+
+## Tech Stack
+
+Frontend:
+
+- React
+- Vite
+- Tailwind CSS
+- React Router
+
+Backend / Database:
+
+- Supabase
+- PostgreSQL
+
+Deployment:
+
+- Vercel
+
+---
+
+## Project Structure
+
+```bash
+SnapLink/
+├── client/     # Frontend
+├── server/     # Backend setup
+├── shared/     # Shared constants
+├── docs/       # Documentation
 ```
-├── client/          # React + Vite frontend
-├── server/          # Express API (minimal; ready for expansion)
-├── shared/          # Shared constants
-└── docs/            # Architecture notes
+
+---
+
+## Run Locally
+
+Clone the repo:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/snaplink.git
+cd snaplink
 ```
 
-See [docs/architecture.md](./docs/architecture.md) for folder-by-folder detail.
+Install dependencies:
 
-## Quick start
+```bash
+npm install
+```
 
-1. Install dependencies (from the repo root):
+Create:
 
-   ```bash
-   npm install
-   ```
+```bash
+client/.env
+```
 
-2. Add Supabase env vars in `client/.env`:
+Add:
 
-   ```env
-   VITE_SUPABASE_URL=your_supabase_project_url
-   VITE_SUPABASE_KEY=your_supabase_anon_key
-   ```
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_KEY=your_supabase_anon_key
+```
 
-3. Run the frontend:
+Start the app:
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-4. Optional — run the API placeholder:
+---
 
-   ```bash
-   npm run dev:server
-   ```
+## Build
 
-   Health check: `http://localhost:3001/api/health`
+```bash
+npm run build
+```
 
-## Scripts
+---
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start client dev server |
-| `npm run build` | Build client for production |
-| `npm run dev:server` | Start server with watch mode |
+## Deployment
 
-## Tech stack
+Frontend:
 
-- **Client:** React, Vite, Tailwind CSS, React Router, Supabase JS
-- **Server:** Express (scaffold)
-- **Shared:** ES modules for constants
+- Vercel
 
-## Deploy
+Backend & Database:
 
-See **[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)** for Vercel + Supabase setup. Copy `client/.env.example` to `client/.env` for local development.
+- Supabase
 
-## License
+---
 
-Personal project.
+## Author
+
+Sarthak
